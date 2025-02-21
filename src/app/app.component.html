@@ -1,0 +1,48 @@
+<app-loader></app-loader>
+<app-message></app-message>
+
+<section class="app--header">
+  <app-header></app-header>
+</section>
+<main class="overflow-auto flex-1">
+  <router-outlet/>
+  <section class="app--footer p-6">COPYRIGHT © 2025</section>
+</main>
+
+<!--<section class="app&#45;&#45;container">-->
+<!--  <section class="app&#45;&#45;sidenav">-->
+<!--    <app-menu></app-menu>-->
+<!--  </section>-->
+
+<!--  <section class="app&#45;&#45;content">-->
+<!--    <section class="app&#45;&#45;header">-->
+<!--      <app-header></app-header>-->
+<!--    </section>-->
+<!--    <main class="overflow-auto flex-1">-->
+<!--      <router-outlet />-->
+<!--      <section class="app&#45;&#45;footer p-6">COPYRIGHT © 2025</section>-->
+<!--    </main>-->
+<!--  </section>-->
+<!--</section>-->
+
+<!--
+  <div class="theme-toggle">
+    <mat-slide-toggle
+      (change)="themeService.toogleTheme()"
+      [checked]="isDarkTheme">
+      Activer/Désactiver le thème sombre
+    </mat-slide-toggle>
+  </div>
+  <label for="language-switch">Langue :</label>
+  <select (change)="switchLanguage(currentLang)" [(ngModel)]="currentLang" id="language-switch">
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+  </select>
+
+  <h1>{{ 'hello' | translate }}, {{ title }}</h1>
+
+  <button (click)="showSuccess()">Afficher Succès</button>
+  <button (click)="showError()">Afficher Erreur</button>
+  <button (click)="showInfo()">Afficher Information</button>
+  <button (click)="showWarning()">Afficher Avertissement</button>
+-->

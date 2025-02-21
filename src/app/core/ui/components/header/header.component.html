@@ -1,0 +1,45 @@
+<div class="app--header--content">
+  <div class="app--header--app">
+  </div>
+  <div class="app--header--user">
+    <ng-icon
+      (click)="themeService.toogleTheme()"
+      class="cursor-pointer"
+      name="{{ icon }}"
+    />
+
+    <img
+      (click)="
+        languageService.changeLanguage(selectedLang === 'fr' ? 'en' : 'fr')
+      "
+      alt="language"
+      class="cursor-pointer"
+      height="24"
+      src="{{ languageLogo }}"
+      width="24"
+    />
+
+    <div class="app--icon-badge p-1">
+      <p-badge [value]="notificationCount" badgeSize="small"/>
+      <ng-icon
+        (click)="toggleNotification($event)"
+        class="cursor-pointer"
+        name="hugeNotification03"
+      />
+    </div>
+
+    <div
+      (click)="toggleUser($event)"
+      class="cursor-pointer app--header--user--login"
+    >
+      <img alt="user" class="app--header--login--img" src="images/garcon.png"/>
+    </div>
+  </div>
+</div>
+
+<p-popover #popoverNotification>
+  <app-notification></app-notification>
+</p-popover>
+<p-popover #popoverUser>
+  <app-user></app-user>
+</p-popover>
