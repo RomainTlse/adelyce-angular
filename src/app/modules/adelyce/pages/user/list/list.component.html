@@ -1,0 +1,45 @@
+<p-button label="Nouvel utilisateur"/>
+<p-card header="">
+  <p-table [tableStyle]="{ 'min-width': '50rem' }" [value]="users">
+    <ng-template #header>
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Mail</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-user>
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td class="flex gap-2">
+          <a href="/users/view/{{user.id}}">
+            <ng-icon
+              class="cursor-pointer"
+              name="hugeView"
+            />
+          </a>
+          <a href="/users/edit/{{user.id}}">
+            <ng-icon
+              class="cursor-pointer"
+              name="hugeEdit02"
+            />
+          </a>
+          <div>
+            <ng-icon
+              class="cursor-pointer"
+              name="hugeDelete01"
+            />
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
+

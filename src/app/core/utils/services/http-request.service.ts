@@ -22,11 +22,7 @@ export class HttpRequestService {
         }),
       });
     }
-    return this._http.get<T>(route, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    });
+    return this._http.get<T>(route);
   }
 
   /**
@@ -49,11 +45,7 @@ export class HttpRequestService {
         }),
       });
     }
-    return this._http.get<T>(url, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    });
+    return this._http.get<T>(url);
   }
 
   /**

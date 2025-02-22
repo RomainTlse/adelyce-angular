@@ -1,0 +1,12 @@
+<p-card header="">
+  {{ user?.firstname }} {{ user?.lastname }}
+  <b>Nom d'utilisateur :</b> {{ user?.lastname }}
+  <b>Email :</b> {{ user?.email }}
+  <a href="/users/list">
+    <p-button label="Retour"/>
+  </a>
+  <a href="/users/edit/{{user?.id}}">
+    <p-button label="Modifier"/>
+  </a>
+
+</p-card>
