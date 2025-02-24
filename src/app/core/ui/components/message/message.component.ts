@@ -85,7 +85,6 @@ export class MessageComponent implements OnInit, OnDestroy {
   // Fonction pour annuler l'action (undo)
   undoMessage(index: number): void {
     const message = this.messages[index];
-    console.log('Undo:', message.title);
     this.messages.splice(index, 1); // Supprimer la mail
   }
 }

@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Button } from 'primeng/button';
-import { NgIcon, provideIcons } from '@ng-icons/core';
+import { provideIcons } from '@ng-icons/core';
 import {
   hugeCalendarAdd01,
   hugeFileAdd,
@@ -19,7 +18,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-notification',
-  imports: [Button, NgIcon, NgScrollbar, Divider, AsyncPipe, TranslatePipe],
+  imports: [NgScrollbar, Divider, AsyncPipe, TranslatePipe],
   templateUrl: './notification.component.html',
   styleUrl: './notification.component.sass',
   viewProviders: [

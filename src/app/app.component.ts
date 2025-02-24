@@ -60,10 +60,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._loaderService.show();
-    setTimeout(() => {
-      this._loaderService.hide();
-    }, 1000);
+    // this._loaderService.show();
+    // setTimeout(() => {
+    //   this._loaderService.hide();
+    // }, 1000);
   }
 
   showSuccess() {

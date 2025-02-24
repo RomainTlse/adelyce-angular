@@ -1,4 +1,8 @@
 {
+  "actions": "Actions",
+  "article": "Article",
+  "articleName": "Nom de l'article",
+  "associatedUser": "Utilisateur associé",
   "error": {
     "notFound": {
       "title": "Oups, page introuvable !",
@@ -19,5 +23,9 @@
     "shortcuts": "Raccourcies",
     "search": "Recherche"
   },
-  "hello": "Bonjour"
+  "hello": "Bonjour",
+  "id": "Id",
+  "logout": "Deconnextion",
+  "owner": "Propriétaire",
+  "quantity": "Quantité"
 }

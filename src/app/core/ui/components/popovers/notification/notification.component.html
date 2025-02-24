@@ -9,13 +9,6 @@
       @for (notification of notifications$ | async; track notification.id) {
         <div class="popover--notification--list--row">
           <div class="popover--notification--icon">
-            <div
-              class="popover--notification--icon--bg {{
-                notification.type.classCss
-              }}"
-            >
-              <ng-icon name="{{ notification.type.icon }}" />
-            </div>
           </div>
           <div class="popover--notification--infos">
             <div class="popover--notification--desc text-lg">
@@ -36,14 +29,8 @@
             </div>
           }
         </div>
-        <p-divider />
+        <p-divider/>
       }
     </ng-scrollbar>
-  </div>
-  <div class="popover--notification--footer">
-    <p-button
-      [label]="'header.displayAllNotifications' | translate"
-      [link]="true"
-    />
   </div>
 </div>
