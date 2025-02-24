@@ -1,0 +1,22 @@
+<div class="w-full h-full flex justify-center items-center flex-col">
+  <div class="w-1/2 flex flex-col gap-2">
+    <p-card header="Modifier l'article">
+      <form [formGroup]="articleUpdateForm" class="register-form">
+        <p-floatlabel class="w-full" variant="on">
+          <input
+            autocomplete="off"
+            class="w-full"
+            formControlName="quantity"
+            id="quantity"
+            pInputText
+            value=""
+          />
+          <label for="quantity">{{ 'quantity' |translate }}</label>
+        </p-floatlabel>
+      </form>
+
+      <p-button (onClick)="updateArticle()" label="Modifier"/>
+    </p-card>
+
+  </div>
+</div>

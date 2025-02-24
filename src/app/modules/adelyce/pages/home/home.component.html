@@ -1,0 +1,68 @@
+<div class="w-full h-full flex justify-center items-center flex-col">
+  <div class="m-2">
+    {{ 'hello' | translate }} {{ currentUser?.firstname }} {{ currentUser?.lastname }}
+  </div>
+  <div class="w-1/2 flex flex-col gap-2">
+    <a href="/baskets/edit">
+      <p-button label="Ajouter des articles"/>
+    </a>
+    <p-card header="Mon panier">
+      <div>Numéro de panier : {{ basket.basket_number }}</div>
+      <div>Date de création {{ basket.dt_created }}</div>
+
+      <div class="mt-6">Articles dans le panier</div>
+
+      @if (basket.basketArticles) {
+        <p-table [tableStyle]="{ 'min-width': '50rem' }" [value]="basket.basketArticles">
+          <ng-template #header>
+            <tr>
+              <th>{{ 'id' | translate }}</th>
+              <th>{{ 'article' | translate }}</th>
+              <th>{{ 'quantity' | translate }}</th>
+              <th>{{ 'actions' | translate }}</th>
+          </ng-template>
+          <ng-template #body let-basketArticle>
+            <tr>
+              <td>{{ basketArticle.article.id }}</td>
+              <td>{{ basketArticle.article.name }}</td>
+              <td>{{ basketArticle.quantity }}</td>
+              <td>
+                <a href="/articles/edit/{{basketArticle.article.id}}">
+                  <ng-icon
+                    class="cursor-pointer"
+                    name="hugeEdit02"
+                  />
+                </a>
+                <div (click)="deleteArticle(basketArticle.article.id)">
+                  <ng-icon
+                    class="cursor-pointer"
+                    name="hugeDelete01"
+                  />
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      }
+
+    </p-card>
+    <p-card header="Liste des articles associé">
+      <p-table [tableStyle]="{ 'min-width': '50rem' }" [value]="basketArticles">
+        <ng-template #header>
+          <tr>
+            <th>{{ 'articleName' | translate }}</th>
+            <th>{{ 'quantity' | translate }}</th>
+            <th>{{ 'owner' | translate }}</th>
+        </ng-template>
+        <ng-template #body let-basketArticle>
+          <tr>
+            <td>{{ basketArticle.article.name }}</td>
+            <td>{{ basketArticle.quantity }}</td>
+            <td>{{ basketArticle.basket.user.firstname }} {{ basketArticle.basket.user.lastname }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+
+</div>

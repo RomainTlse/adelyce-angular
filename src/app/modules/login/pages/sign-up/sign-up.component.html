@@ -3,7 +3,7 @@
     <p-card>
       <div class="flex flex-col gap-3 items-center text-center">
         <div class="w-full flex justify-center m-5">
-          <img alt="logo" height="50" src="images/angular.svg" width="50" />
+          <img alt="logo" height="50" src="images/angular.svg" width="50"/>
         </div>
         <p class="m-2 text-2xl">Nouveau compte 👶</p>
         <p class="w-96 m-2 text-lg">
@@ -12,75 +12,127 @@
           mais attention, le mot de passe doit être plus sécurisé qu’un
           coffre-fort ! 🔐✨
         </p>
-        <div class="flex gap-1 w-full">
-          <div class="w-1/2">
-            <p-floatlabel class="w-full" variant="on">
-              <input
-                autocomplete="off"
-                class="w-full"
-                id="firstname"
-                pInputText
-              />
-              <label for="firstname">Prénom</label>
-            </p-floatlabel>
+        <form [formGroup]="registerForm" class="register-form">
+          <div class="flex gap-1 w-full">
+            <div class="w-1/2">
+              <p-floatlabel class="w-full" variant="on">
+                <input
+                  autocomplete="off"
+                  class="w-full"
+                  formControlName="firstname"
+                  id="firstname"
+                  pInputText
+                />
+                <label for="firstname">Prénom</label>
+              </p-floatlabel>
+              @if (registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched) {
+                <div class="error">
+                  @if (registerForm.get('firstname')?.hasError('required')) {
+                    <small>Le prénom est requis.</small>
+                  }
+                </div>
+              }
+            </div>
+            <div class="w-1/2">
+              <p-floatlabel class="w-full" variant="on">
+                <input
+                  autocomplete="off"
+                  class="w-full"
+                  formControlName="lastname"
+                  id="lastname"
+                  pInputText
+                />
+                <label for="lastname">Nom</label>
+              </p-floatlabel>
+              @if (registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched) {
+                <div class="error">
+                  @if (registerForm.get('lastname')?.hasError('required')) {
+                    <small>Le nom est requis.</small>
+                  }
+                </div>
+              }
+            </div>
           </div>
-          <div class="w-1/2">
-            <p-floatlabel class="w-full" variant="on">
-              <input
-                autocomplete="off"
-                class="w-full"
-                id="lastname"
-                pInputText
-              />
-              <label for="lastname">Nom</label>
-            </p-floatlabel>
+          <div class="flex gap-1 w-full">
+            <div class="w-1/2">
+              <p-floatlabel class="w-full" variant="on">
+                <input
+                  autocomplete="off"
+                  class="w-full"
+                  formControlName="username"
+                  id="username"
+                  pInputText
+                />
+                <label for="username">Nom d'utilisateur</label>
+              </p-floatlabel>
+              @if (registerForm.get('username')?.invalid && registerForm.get('username')?.touched) {
+                <div class="error">
+                  @if (registerForm.get('username')?.hasError('required')) {
+                    <small>Le nom d'utilisateur est requis.</small>
+                  }
+                </div>
+              }
+            </div>
+            <div class="w-1/2">
+              <p-floatlabel class="w-full" variant="on">
+                <input autocomplete="off" class="w-full" formControlName="email" id="email" pInputText/>
+                <label for="email">Mail</label>
+              </p-floatlabel>
+              @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+                <div class="error">
+                  @if (registerForm.get('email')?.hasError('required')) {
+                    <small>Le nom d'utilisateur est requis.</small>
+                  }
+                </div>
+              }
+            </div>
           </div>
-        </div>
-        <div class="flex gap-1 w-full">
-          <div class="w-1/2">
-            <p-floatlabel class="w-full" variant="on">
-              <input
-                autocomplete="off"
-                class="w-full"
-                id="username"
-                pInputText
-              />
-              <label for="username">Nom d'utilisateur</label>
-            </p-floatlabel>
+          <div class="flex gap-1 w-full">
+            <div class="w-1/2">
+              <p-floatlabel class="w-full" variant="on">
+                <p-password [toggleMask]="true" formControlName="password" id="password" inputId="password"/>
+                <label for="password">Mot de passe</label>
+              </p-floatlabel>
+              @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+                <div class="error">
+                  @if (registerForm.get('password')?.hasError('required')) {
+                    <small>Le nom d'utilisateur est requis.</small>
+                  }
+                  @if (registerForm.get('password')?.hasError('minlength')) {
+                    <small>Le mot de passe doit contenir au moins 8 caractères.</small>
+                  }
+                  @if (registerForm.get('password')?.hasError('pattern')) {
+                    <small>Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre, et un
+                      caractère spécial.</small>
+                  }
+                </div>
+              }
+            </div>
+            <div class="w-1/2">
+              <p-floatlabel class="w-full" variant="on">
+                <p-password
+                  [toggleMask]="true"
+                  formControlName="confirmPassword"
+                  id="confirmPassword"
+                  inputId="confirmPassword"
+                />
+                <label for="confirmPassword">Confirmation</label>
+              </p-floatlabel>
+              @if (registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched) {
+                <small>Les mots de passe ne correspondent pas.</small>
+              }
+            </div>
           </div>
-          <div class="w-1/2">
-            <p-floatlabel class="w-full" variant="on">
-              <input autocomplete="off" class="w-full" id="login" pInputText />
-              <label for="login">Mail</label>
-            </p-floatlabel>
-          </div>
-        </div>
-        <div class="flex gap-1 w-full">
-          <div class="w-1/2">
-            <p-floatlabel class="w-full" variant="on">
-              <p-password [toggleMask]="true" id="pwd" inputId="pwd" />
-              <label for="pwd">Mot de passe</label>
-            </p-floatlabel>
-          </div>
-          <div class="w-1/2">
-            <p-floatlabel class="w-full" variant="on">
-              <p-password
-                [toggleMask]="true"
-                id="confirm-pwd"
-                inputId="confirm-pwd"
-              />
-              <label for="confirm-pwd">Confirmation</label>
-            </p-floatlabel>
-          </div>
-        </div>
+        </form>
+
 
         <div class="m-4">
-          <p-button label="Enregistrer" />
+          <p-button (click)="register()" label="Enregistrer"/>
         </div>
         <div class="gap-5 flex items-center">
           Vous avez déjà un compte ?
           <a href="/login">
-            <p-button [link]="true" label="Connectez vous" />
+            <p-button [link]="true" label="Connectez vous"/>
           </a>
         </div>
       </div>

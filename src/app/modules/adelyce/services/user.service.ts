@@ -25,7 +25,7 @@ export class UserService {
    * @param id
    */
   getUserById(id: number): Observable<User> {
-    return this._httpRequestService.getById<User>(this.apiUrl, id);
+    return this._httpRequestService.getById<User>(`this.apiUrl/${id}`);
   }
 
   /**
@@ -44,8 +44,7 @@ export class UserService {
    */
   updateUser(user: User): Observable<User> {
     return this._httpRequestService.updateDatas<User>(
-      this.apiUrl,
-      user.id,
+      `this.apiUrl/${user.id}`,
       user
     );
   }
@@ -55,6 +54,6 @@ export class UserService {
    * @param id
    */
   deleteUser(id: number): Observable<unknown> {
-    return this._httpRequestService.deleteDatas(this.apiUrl, id);
+    return this._httpRequestService.deleteDatas(`this.apiUrl/${id}`);
   }
 }

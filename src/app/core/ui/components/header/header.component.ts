@@ -3,7 +3,6 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { NotificationComponent } from '../popovers/notification/notification.component';
 import { Popover } from 'primeng/popover';
 import { UserComponent } from '../popovers/user/user.component';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ThemeService } from '../../services/theme.service';
 import { Icon } from '../../../../app.component';
 import {
@@ -27,26 +26,19 @@ import { TranslateService } from '@ngx-translate/core';
   ],
 })
 export class HeaderComponent {
-  @ViewChild('popoverShortcut') popoverShortcut!: Popover;
-  @ViewChild('popoverMessage') popoverMessage!: Popover;
   @ViewChild('popoverNotification') popoverNotification!: Popover;
   @ViewChild('popoverUser') popoverUser!: Popover;
-
-  ref?: DynamicDialogRef;
 
   public themeService = inject(ThemeService);
   icon: Icon = 'hugeSun02';
   selectedLang: Language = 'fr';
   languageLogo = 'images/france.png';
   notificationCount = 0;
-  mailCount = 0;
-  protected dialogService = inject(DialogService);
   protected languageService = inject(LanguageService);
+  protected store = inject(Store);
+  protected translate = inject(TranslateService);
 
-  constructor(
-    private store: Store,
-    private translate: TranslateService
-  ) {
+  constructor() {
     this.themeService.getTheme().subscribe((isDark) => {
       this.icon = isDark ? 'hugeSun02' : 'hugeMoon02'; // Change l'icône selon le thème
     });

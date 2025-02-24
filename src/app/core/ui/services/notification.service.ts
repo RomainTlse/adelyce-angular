@@ -7,7 +7,7 @@ import { Notification } from '../interfaces/notification';
   providedIn: 'root',
 })
 export class NotificationService {
-  private _apiUrl = 'http://localhost:3000/notifications';
+  private _apiUrl = '/api/notifications';
   private _httpRequestService = inject(HttpRequestService);
 
   getNotifications(): Observable<Notification[]> {
@@ -15,7 +15,7 @@ export class NotificationService {
   }
 
   getNotificationById(id: number): Observable<Notification> {
-    return this._httpRequestService.getById(this._apiUrl, id);
+    return this._httpRequestService.getById(`this._apiUrl/${id}`);
   }
 
   addNotification(post: Notification): Observable<Notification> {
@@ -23,10 +23,10 @@ export class NotificationService {
   }
 
   updateNotification(id: number, post: Notification): Observable<Notification> {
-    return this._httpRequestService.updateDatas(this._apiUrl, id, post);
+    return this._httpRequestService.updateDatas(`this._apiUrl/${id}`, post);
   }
 
   deleteNotification(id: number): Observable<unknown> {
-    return this._httpRequestService.deleteDatas(this._apiUrl, id);
+    return this._httpRequestService.deleteDatas(`this._apiUrl/${id}`);
   }
 }

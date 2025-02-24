@@ -1,0 +1,52 @@
+<div class="w-full h-[750px] flex justify-center items-center flex-col">
+
+  <div class="w-1/2 items-center justify-center flex flex-col gap-2">
+    <p-card header="Liste des articles ">
+      <form [formGroup]="articleForm" class="register-form">
+        <p-floatlabel class="w-full md:w-56" variant="on">
+          <p-select [options]="articles" formControlName="article" id="article" inputId="associated_user"
+                    optionLabel="name"
+                    styleClass="w-full"/>
+          <label for="article">{{ 'article' | translate }}</label>
+        </p-floatlabel>
+      </form>
+
+    </p-card>
+    <p-card header="Nouvel article ">
+      <form [formGroup]="articleNewForm" class="register-form">
+        <p-floatlabel class="w-full" variant="on">
+          <input
+            autocomplete="off"
+            class="w-full"
+            formControlName="name"
+            id="name"
+            pInputText
+          />
+          <label for="name">Nom de l'article</label>
+        </p-floatlabel>
+        <p-floatlabel class="w-full" variant="on">
+          <input
+            autocomplete="off"
+            class="w-full"
+            formControlName="quantity"
+            id="quantity"
+            pInputText
+          />
+          <label for="quantity">Quantité</label>
+        </p-floatlabel>
+      </form>
+    </p-card>
+    <p-card header="Utilisateur associé ">
+      <form [formGroup]="associatedUserForm" class="register-form">
+        <p-floatlabel class="w-full md:w-56" variant="on">
+          <p-select [options]="users" formControlName="associated_user" id="associated_user" inputId="associated_user"
+                    optionLabel="username"
+                    styleClass="w-full"/>
+          <label for="associated_user">{{ 'associatedUser' | translate }}</label>
+        </p-floatlabel>
+      </form>
+    </p-card>
+
+    <p-button (onClick)="newBasket()" label="Enregistrer"/>
+  </div>
+</div>
